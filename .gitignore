@@ -1,3 +1,4 @@
 .DS_Store
-out/*
-src/*
+assets/*
+./material-design-icons
+./node_modules
