@@ -1,6 +1,6 @@
 const { resolve } = require("path");
 const { readdir } = require("fs").promises;
-const fs = require("fs");
+const fs = require("fs").promises;
 
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
@@ -17,18 +17,18 @@ async function* getFiles(dir) {
 }
 
 (async () => {
-  for await (const f of getFiles('./src')) {
+  for await (const f of getFiles("./src")) {
     if (f.toString().lastIndexOf("twotone") !== -1) {
       const a = f.split("/");
-      const destination = `./out/${a[a.length - 3]}.svg`;
+      const destination = `out/${a[a.length - 3]}.svg`;
 
-      fs.copyFile(f, destination, (err) => {
-        if (err) {
-          throw err;
-        }
+      try {
+        fs.copyFile(f, destination);
 
         console.log(destination);
-      });
+      } catch (error) {
+        throw error;
+      }
     }
   }
 })();
