@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/cllpse/material-icons-extract/issues"
   },
-  "homepage": "https://github.com/cllpse/material-icons-extract#readme"
+  "homepage": "https://github.com/cllpse/material-icons-extract#readme",
+  "dependencies": {
+    "shelljs": "^0.8.4"
+  }
 }
